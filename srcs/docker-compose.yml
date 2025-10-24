@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    expose:
+      - 9000
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    restart: always
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    expose:
+      - 3306
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception
+
+
+volumes:
+  wordpress_data:
+    driver_opts:
+      o: 'bind'
+      type: 'none'
+      device: '/home/aalkaisi/data/wordpress_vol'
+
+  mariadb_data:
+    driver_opts:
+      o: 'bind'
+      type: 'none'
+      device: '/home/aalkaisi/data/mariadb_vol'
+
+networks:
+  inception:
+    driver: bridge
