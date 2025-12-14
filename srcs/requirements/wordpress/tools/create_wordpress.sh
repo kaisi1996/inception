@@ -3,7 +3,7 @@
 wp core download --allow-root --locale=en_US
 
 # Check if wp-config.php exists
-if [ ! -f "/var/www/wp-config.php" ]; then
+if [ ! -f "/var/www/html/wp-config.php" ]; then
 
 	wp config create --allow-root --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=mariadb --dbcharset="utf8" 
 fi
