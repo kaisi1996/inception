@@ -15,13 +15,12 @@ re: down up
 
 clean: down
 	@echo "Cleaning configuration $(NAME)..."
-	@yes | docker system prune --all
+	@docker rmi -f $$(docker images -qa) 2>/dev/null || true
+	@docker volume rm $$(docker volume ls -q) 2>/dev/null || true
+	@docker network rm $$(docker network ls -q) 2>/dev/null || true
 
-fclean: down
+fclean: clean
 	@echo "Total clean of all Docker configurations"
-	@yes | docker system prune --all
-	@docker network prune --force
-	@docker volume prune --force
 	@sudo rm -rf /home/$(USER)/data
 	@sudo rm -rf /home/$(USER)/Downloads
 
