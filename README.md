@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by kaisi1996.*
+*This project has been created as part of the 42 curriculum by aalkaisi.*
 
 # Inception
 
@@ -6,27 +6,20 @@
 
 Inception is a comprehensive Docker-based project that implements a secure, multi-service web hosting infrastructure. The project demonstrates advanced containerization concepts by deploying a complete WordPress stack with MariaDB database, all orchestrated through Docker Compose and secured with SSL/TLS encryption.
 
-The goal of this project is to build a resilient web hosting environment that follows industry best practices for containerization, security, and service orchestration. This infrastructure provides a complete LEMP stack (Linux, Nginx, MariaDB, PHP) running in isolated Docker containers with persistent data storage and secure communication channels.
-
-### Key Features
-- **Containerized Architecture**: Each service runs in its own isolated Docker container
-- **SSL/TLS Security**: Self-signed certificates for encrypted HTTPS communication
-- **Persistent Data**: Database and WordPress files are stored in Docker volumes
-- **Automated Deployment**: One-command setup using Docker Compose and Makefile
-- **Production-Ready**: Includes proper service dependencies, restart policies, and configuration management
+The goal of this project is to build a resilient web hosting environment that follows industry best practices for containerization, security, and service orchestration. This infrastructure provides a complete (Nginx, MariaDB, WordPress) running in isolated Docker containers with persistent data storage and secure communication channels.
 
 ## Instructions
 
 ### Prerequisites
 - Docker and Docker Compose installed on your system
 - Make utility for automated build and deployment
-- Sufficient permissions to manage Docker containers and volumes
+- A browser to check the project
 
 ### Installation and Execution
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kaisi1996/inception.git
+   git clone <link>
    cd inception
    ```
 
@@ -51,7 +44,7 @@ The goal of this project is to build a resilient web hosting environment that fo
 
 3. **Build and launch the project**
    ```bash
-   make up
+   make
    ```
    This command will:
    - Initialize necessary directories
@@ -59,7 +52,7 @@ The goal of this project is to build a resilient web hosting environment that fo
    - Start all services in detached mode
 
 4. **Access your WordPress site**
-   - Open your browser and navigate to `https://your-domain.com`
+   - Open your browser and navigate to `aalkaisi.42.fr`
    - Use the admin credentials from your `.env` file to access the WordPress dashboard
 
 ### Management Commands
@@ -90,21 +83,9 @@ The goal of this project is to build a resilient web hosting environment that fo
 
 AI was utilized in this project for the following tasks:
 
-1. **Documentation Generation**: AI assistance was used to create comprehensive README.md, USER_DOC.md, and DEV_DOC.md files with proper formatting and structure according to 42 curriculum requirements.
+1. **Documentation Generation**: AI assistance was used to create a sample of README.md, USER_DOC.md, and DEV_DOC.md files with proper formatting and structure.
 
-2. **Code Review and Optimization**: AI helped review Dockerfile configurations and suggested improvements for security, performance, and maintainability.
-
-3. **Troubleshooting Guidance**: AI provided assistance in debugging container orchestration issues and service dependency problems.
-
-4. **Best Practices Implementation**: AI helped implement industry best practices for Docker security, volume management, and service configuration.
-
-The AI tools were specifically used for:
-- Generating project documentation that meets 42 school standards
-- Reviewing Docker Compose configuration for optimal service orchestration
-- Providing guidance on SSL certificate generation and Nginx configuration
-- Suggesting improvements for container security and resource management
-
-All core implementation, architecture decisions, and technical solutions were developed independently, with AI serving as a supportive tool for documentation and code quality enhancement.
+2. **Troubleshooting Guidance**: AI provided assistance in debugging container orchestration issues.
 
 ## Project Design Choices
 
@@ -115,7 +96,6 @@ This project uses Docker to create a containerized web hosting environment with 
 1. **Service Isolation**: Each component (Nginx, WordPress, MariaDB) runs in separate containers for security and maintainability
 2. **Resource Efficiency**: Alpine Linux base images minimize container size and attack surface
 3. **Automated Configuration**: Custom scripts handle service initialization and WordPress setup
-4. **Persistent Storage**: Docker volumes ensure data persistence across container restarts
 
 ### Technology Comparisons
 
@@ -123,30 +103,23 @@ This project uses Docker to create a containerized web hosting environment with 
 **Virtual Machines** provide complete hardware virtualization with full operating systems, offering strong isolation but requiring significant resources and longer startup times.
 
 **Docker** uses OS-level virtualization, sharing the host kernel while providing process isolation. This results in:
-- Faster startup times (seconds vs minutes)
+- Faster startup times
 - Lower resource consumption
-- More efficient resource utilization
-- Easier deployment and scaling
-
-**Choice**: Docker was selected for this project due to its efficiency, faster development cycles, and industry adoption for microservices architectures.
+- Easier deployment
+- More Compatibile
 
 #### Secrets vs Environment Variables
-**Docker Secrets** provide encrypted storage for sensitive data, automatic rotation capabilities, and secure distribution to services. However, they require Docker Swarm and are more complex to manage.
+**Docker Secrets** provide encrypted storage for sensitive data, automatic rotation capabilities, and secure distribution to services. However, they are more complex to manage.
 
 **Environment Variables** are simpler to implement, work with Docker Compose, and are easier for development environments. They provide basic security through file permissions but lack encryption.
-
-**Choice**: Environment variables were chosen for simplicity and compatibility with Docker Compose, with the understanding that production environments should implement additional security measures.
 
 #### Docker Network vs Host Network
 **Docker Network** creates isolated network environments for containers, allowing service discovery by name and providing network segmentation. This enhances security and enables complex multi-container applications.
 
-**Host Network** shares the host's network stack, providing better performance but eliminating network isolation and making port management more complex.
-
-**Choice**: Docker Network was selected to maintain proper service isolation, enable service discovery, and follow container networking best practices.
+**Host Network** shares the host's network stack, but eliminating network isolation.
 
 #### Docker Volumes vs Bind Mounts
 **Docker Volumes** are managed by Docker, provide cross-platform compatibility, and support volume drivers for advanced storage solutions. They offer better performance and easier backup capabilities.
 
 **Bind Mounts** map host filesystem paths directly into containers, providing direct access but creating platform dependencies and potential permission issues.
 
-**Choice**: Docker Volumes with bind mount options were selected to combine the benefits of managed volumes with the transparency of host filesystem access for data persistence and backup purposes.
