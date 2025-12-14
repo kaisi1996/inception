@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mkdir -p  /home/aalkaisi/data /home/aalkaisi/data/wordpress_vol /home/aalkaisi/data/mariadb_vol
+mkdir -p  /home/$USER/data /home/$USER/data/wordpress_vol /home/$USER/data/mariadb_vol

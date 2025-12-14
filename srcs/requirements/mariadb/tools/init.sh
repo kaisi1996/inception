@@ -12,6 +12,8 @@ if [ ! -d /var/lib/mysql/mysql ]; then
     fi
 fi
 
+echo "MYSQL_USER=$MYSQL_USER, MYSQL_PASSWORD=$MYSQL_PASSWORD, MYSQL_DATABASE=$MYSQL_DATABASE, MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD"
+
 cat << EOF > tmpfile
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
@@ -21,6 +23,9 @@ GRANT ALL PRIVILEGES ON \`$MYSQL_DATABASE\`.* TO '$MYSQL_USER'@'%';
 FLUSH PRIVILEGES;
 
 EOF
+
+echo "Contents of tmpfile:"
+cat tmpfile
 
 /usr/bin/mysqld --user=mysql --bootstrap --skip-name-resolve --skip-networking=0 < tmpfile
 

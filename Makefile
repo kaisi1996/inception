@@ -27,5 +27,5 @@ fclean: down
 
 rebuild: fclean up
 
-.PHONY = start all build down re clean fclean
+.PHONY = all up down re clean fclean rebuild
 
