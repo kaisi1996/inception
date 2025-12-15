@@ -11,8 +11,8 @@ fi
 # Install WordPress
 wp core install --url="$DOMAIN_NAME" \
 	--title="My WordPress" \
-	--admin_user="$WP_ADMIN_LOGIN" \
-	--admin_password="$WP_ADMIN_PASSWORD" \
+	--admin_user="$MYSQL_USER" \
+	--admin_password="$MYSQL_PASSWORD" \
 	--admin_email="$WP_ADMIN_EMAIL" \
 	--path=/var/www/html/ \
 	--allow-root
@@ -27,6 +27,6 @@ wp option update blog_public 0 --allow-root
 
 wp plugin update --all --allow-root
 
-chown -R www-data:www-data /var/www/html/
-chmod -R 755 /var/www/html/
+chown -R www-data:www-data /var/www/html
+chmod -R 755 /var/www/html
 exec "$@"

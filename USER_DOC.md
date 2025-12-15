@@ -73,8 +73,6 @@ MYSQL_PASSWORD=your_secure_password
 
 # WordPress Credentials
 DOMAIN_NAME=your-domain.com
-WP_ADMIN_LOGIN=admin
-WP_ADMIN_PASSWORD=admin_password
 WP_ADMIN_EMAIL=admin@your-domain.com
 WP_USER_LOGIN=editor
 WP_USER_PASSWORD=editor_password

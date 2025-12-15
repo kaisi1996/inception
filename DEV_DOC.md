@@ -49,8 +49,6 @@ MYSQL_PASSWORD=SecureUserPassword123!
 
 # WordPress Configuration
 DOMAIN_NAME=localhost
-WP_ADMIN_LOGIN=admin
-WP_ADMIN_PASSWORD=SecureAdminPassword123!
 WP_ADMIN_EMAIL=admin@example.com
 WP_USER_LOGIN=editor
 WP_USER_PASSWORD=SecureEditorPassword123!
