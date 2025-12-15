@@ -5,7 +5,7 @@ RUN apk update && \
     apk add --no-cache php83 php83-cli php83-fpm php83-mysqli \
     php83-json php83-openssl php83-curl php83-zlib \
     php83-xml php83-phar php83-intl php83-dom curl php83-ctype \
-    wget tar openrc php83-cgi php83-mbstring \
+    wget tar openrc vim php83-cgi php83-mbstring \
     && ln -sf /usr/bin/php83 /usr/bin/php
 
 
