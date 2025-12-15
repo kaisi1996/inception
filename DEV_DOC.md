@@ -100,10 +100,6 @@ make re
 ```bash
 make clean
 ```
-**Process:**
-1. Stops services
-2. Runs `docker system prune --all`
-3. Removes unused images
 
 **make fclean** - Complete cleanup
 ```bash
